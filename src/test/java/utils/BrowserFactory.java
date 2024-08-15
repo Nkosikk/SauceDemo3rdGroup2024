@@ -11,9 +11,9 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class BrowserFactory {
-   private static WebDriver driver;
+   private WebDriver driver;
 
-    public static WebDriver startApp(String browser, String url){
+    public WebDriver startApp(String browser, String url){
         if(browser.equalsIgnoreCase("chrome")){
             driver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("firefox") || browser.equalsIgnoreCase("mozilla")) {
@@ -29,11 +29,6 @@ public class BrowserFactory {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
         return  driver;
-    }
-
-    @Test
-    public void testMe(){
-        BrowserFactory.startApp("firefoxxx","https://www.saucedemo.com/");
     }
 
 }

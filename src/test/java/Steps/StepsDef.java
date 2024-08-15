@@ -7,24 +7,30 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
+import pages.LoginPage;
+import utils.BrowserFactory;
 
 public class StepsDef {
-    WebDriver driver;
+    WebDriver driver = null;
+    BrowserFactory browserFactory = new BrowserFactory();
+    LoginPage loginPage = null;
 
     @Given("login page is displayed")
     public void login_page_is_displayed() {
-        driver = new ChromeDriver();
-        driver.get("https://www.saucedemo.com/");
+        driver = browserFactory.startApp("chrome","https://www.saucedemo.com/");
     }
 
     @And("I enter username (.*)$")
     public void i_enter_username_username(String username) {
-        driver.findElement(By.id("user-name")).sendKeys(username);
-
+        loginPage = new LoginPage(driver);
+        loginPage.enterUsername(username);
     }
 
     @And("I enter password (.*)$")
     public void i_enter_password_password(String password) throws InterruptedException {
+        //TODO Chipuriro to use the LoginPage class to enter password
+        //TODO Chipuriro to nominate the next person to use the LoginPAge class to click the submit button
+
         driver.findElement(By.id("password")).sendKeys(password);
     }
 
