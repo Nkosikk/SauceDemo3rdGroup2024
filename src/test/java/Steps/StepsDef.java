@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
+import pages.InventoryPage;
 import pages.LoginPage;
 import utils.BrowserFactory;
 
@@ -16,11 +17,13 @@ public class StepsDef {
     WebDriver driver = null;
     BrowserFactory browserFactory = new BrowserFactory();
     LoginPage loginPage = null;
+    InventoryPage inventoryPage;
 
     @Given("login page is displayed")
     public void login_page_is_displayed() {
-        driver = browserFactory.startApp("chrome","https://www.saucedemo.com/");
+        driver = browserFactory.startApp("edge", "https://www.saucedemo.com/");
         loginPage = new LoginPage(driver);
+        inventoryPage = new InventoryPage(driver);
     }
 
     @And("I enter username (.*)$")
@@ -32,7 +35,6 @@ public class StepsDef {
     @And("I enter password (.*)$")
     public void i_enter_password_password(String password) throws InterruptedException {
         loginPage.enterPassword(password);
-        //TODO Chipuriro to nominate the next person to use the LoginPAge class to click the submit button
     }
 
     @When("I click login button")
@@ -44,12 +46,24 @@ public class StepsDef {
 
     @Then("Homepage is displayed")
     public void homepage_is_displayed() {
-        driver.findElement(By.xpath("//span[@class='title'][contains(.,'Products')]")).isDisplayed();
-
+        inventoryPage.verifyProductPage();
     }
 
-    @After
-    public void closeBrowser(){
-        driver.quit();
+
+
+    @And("I add item to cart")
+    public void userAddItemToCart() {
+        inventoryPage.addItemToCart();
     }
+
+    @And("I clicks the Shopping cart")
+    public void userClicksTheShoppingCart() {
+        inventoryPage.viewShoppingCart();
+    }
+
+
+//    @After
+//    public void closeBrowser() {
+//        driver.quit();
+//    }
 }
