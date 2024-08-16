@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
+import pages.CartPage;
 import pages.InventoryPage;
 import pages.LoginPage;
 import utils.BrowserFactory;
@@ -18,12 +19,14 @@ public class StepsDef {
     BrowserFactory browserFactory = new BrowserFactory();
     LoginPage loginPage = null;
     InventoryPage inventoryPage;
+    CartPage cartPage;
 
     @Given("login page is displayed")
     public void login_page_is_displayed() {
         driver = browserFactory.startApp("edge", "https://www.saucedemo.com/");
         loginPage = new LoginPage(driver);
         inventoryPage = new InventoryPage(driver);
+        cartPage = new CartPage(driver);
     }
 
     @And("I enter username (.*)$")
@@ -50,7 +53,6 @@ public class StepsDef {
     }
 
 
-
     @And("I add item to cart")
     public void userAddItemToCart() {
         inventoryPage.addItemToCart();
@@ -59,6 +61,11 @@ public class StepsDef {
     @And("I clicks the Shopping cart")
     public void userClicksTheShoppingCart() {
         inventoryPage.viewShoppingCart();
+    }
+
+    @Then("I click the checkout Btn")
+    public void iClickTheCheckoutBtn() {
+        cartPage.clickCheckout();
     }
 
 

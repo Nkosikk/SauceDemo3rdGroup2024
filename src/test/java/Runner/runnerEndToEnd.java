@@ -6,7 +6,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = {"src/test/resources/Features"},
         glue = {"Steps"},
-        plugin = {"html:target/cucumberBasicHtmlReport.html"},
+        plugin = {"html:target/cucumberEndToEndReport.html"},
         tags =  "@endToEnd"
 )
 public class runnerEndToEnd extends AbstractTestNGCucumberTests {

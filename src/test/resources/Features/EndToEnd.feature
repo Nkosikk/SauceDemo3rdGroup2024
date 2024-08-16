@@ -9,6 +9,7 @@ Feature: End To End
     Then Homepage is displayed
     And I add item to cart
     And I clicks the Shopping cart
+    Then I click the checkout Btn
 
     Examples:
       | username      | password     |

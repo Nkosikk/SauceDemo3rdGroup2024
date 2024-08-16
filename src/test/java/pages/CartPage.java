@@ -12,12 +12,12 @@ public class CartPage {
     @FindBy(xpath = "//button[@id='checkout']")
     WebElement checkout_id;
 
-    public CartPage(WebDriver driver){
+    public CartPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
-    public void clickCheckout(){
+    public void clickCheckout() {
         checkout_id.click();
     }
 
