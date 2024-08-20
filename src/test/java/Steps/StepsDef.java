@@ -1,8 +1,12 @@
 package Steps;
 
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
@@ -48,4 +52,13 @@ public class StepsDef {
     public void homepage_is_displayed() {
         inventoryPage.verifyProductPage();
     }
+
+    @AfterStep
+    public void addScreenshot(Scenario scenario){
+        if (scenario.isFailed()){
+            byte[] screenshot=((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot,"image/png","image");
+        }
+    }
+
 }

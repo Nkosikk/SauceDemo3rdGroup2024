@@ -20,7 +20,7 @@ allure-results/
 .settings
 .springBeans
 .sts4-cache
-
+test-output/
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -30,7 +30,7 @@ allure-results/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
-
+Reports/
 ### VS Code ###
 .vscode/
 

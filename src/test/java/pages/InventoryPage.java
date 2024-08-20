@@ -20,7 +20,7 @@ public class InventoryPage {
     }
 
     public void verifyProductPage() {
-        Assert.assertEquals(productTitle_xpath.getText(), "Products");
+        Assert.assertEquals(productTitle_xpath.getText(), "Products1");
     }
 
 //    By productTitle_xpath2 = By.xpath("//span[@class='title'][contains(.,'Products')]");
