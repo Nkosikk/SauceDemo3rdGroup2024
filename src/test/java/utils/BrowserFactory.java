@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class BrowserFactory {
-   private WebDriver driver;
+   private static WebDriver driver;
 
     public WebDriver startApp(String browser, String url){
         if(browser.equalsIgnoreCase("chrome")){
@@ -29,6 +29,12 @@ public class BrowserFactory {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
         return  driver;
+    }
+
+    public static void quitApp(){
+        if(driver!=null){
+            driver.quit();
+        }
     }
 
 }

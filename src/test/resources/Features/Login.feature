@@ -9,4 +9,4 @@ Feature: Login
     Then Homepage is displayed
     Examples:
       | username      | password     |
-      | standard_user | secret_sauce |
+        | standard_user | secret_sauce |
