@@ -20,5 +20,4 @@ public class CartPage {
     public void clickCheckout() {
         checkout_id.click();
     }
-
 }
